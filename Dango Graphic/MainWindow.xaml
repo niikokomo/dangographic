@@ -1,0 +1,16 @@
+﻿<Window x:Class="PNGResolution.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PNG Resolution" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="OpenFileButton" Content="Open File" Click="OpenFileButton_Click"/>
+            <Label x:Name="ResolutionLabel"/>
+        </StackPanel>
+        <Image x:Name="ImageBox" Grid.Row="1"/>
+    </Grid>
+</Window>
