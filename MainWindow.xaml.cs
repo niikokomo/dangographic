@@ -247,6 +247,7 @@ namespace WpfApp1
                     BitmapImage newBitmap = new BitmapImage();
                     newBitmap.BeginInit();
                     newBitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    newBitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
                     newBitmap.UriSource = new Uri(openFileDialog.FileName);
                     newBitmap.EndInit();
                     userSelectedImage.Source = newBitmap;
