@@ -11,7 +11,7 @@ Simply [download dangographic.zip](https://github.com/niikokomo/dangographic/rel
 
 ![image](https://user-images.githubusercontent.com/93227270/232514754-6f000919-230f-4252-a577-0f47c52662cf.png)
 
-After running through a first time setup an locating Little Busters' installation directory, the user will have a number of options...
+After running through a first time setup and locating Little Busters' installation directory, the user will have a number of options...
 
 ### .PAK File List
 Double-clicking on an archive in the .PAK file list will display a list of the textures contained within that archive.
