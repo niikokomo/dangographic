@@ -66,7 +66,7 @@ There might very well be a way around this, the header data of certain textures 
 
 This is due to a silly quirk of LuckSystem. The CZ0 Pixel Offset Fix toggle shifts the coordinates of the reimported texture two pixels to the right, visually fixing the issue. However, this fix may not be applied to everything as certain child textures (character expressions) depend on the coordinatess of their parent texture (character bodies). This video helps explain the error in detail and shows when the fix should be used.
 
-https://user-images.githubusercontent.com/93227270/232650887-9c30fbb2-b6fb-4bd7-9b4a-5d90bf599de3.mp4
+https://user-images.githubusercontent.com/93227270/232672902-8f7fd658-4cf6-4c33-885b-68b818ca181e.mp4
 
 ### 00 Byte Error
 
