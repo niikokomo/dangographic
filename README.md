@@ -52,7 +52,7 @@ The restore all button will revert every texture in the currently selected .PAK 
 
 The CZ0 Pixel Offset Fix toggle is used to get around a limitation of reimporting CZ0 type textures. See [Texture Editing & Limitations]() for more information.
 
-### [Video Demo (May contain spoilers!)](https://files.catbox.moe/gzkjz0.mp4).
+https://user-images.githubusercontent.com/93227270/232661223-ab29f08f-3824-4cda-a7b9-af9963cd5e55.mp4
 
 # Texture Editing & Limitations
 
