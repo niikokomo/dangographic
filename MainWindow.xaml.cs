@@ -95,8 +95,8 @@ namespace WpfApp1
                 DisplayedImage.Source = null;
                 // Wipe DisplayedImageInfo
                 DisplayedImageInfo.Text = string.Empty;
-                // Disable PixelOffsetFixCheckBox
-                PixelOffsetFixCheckBox.IsEnabled = false;
+//                // Disable PixelOffsetFixCheckBox
+//                PixelOffsetFixCheckBox.IsEnabled = false;
                 string selectedItem = FileList.SelectedItem.ToString();
                 string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(selectedItem);
                 string file = "dict/" + fileNameWithoutExtension + ".txt";
@@ -128,14 +128,14 @@ namespace WpfApp1
 
         private async void ContentList_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            if (ContentList.SelectedItem != null && ContentList.SelectedItem.ToString().EndsWith(".CZ0"))
-            {
-                PixelOffsetFixCheckBox.IsEnabled = true;
-            }
-            else
-            {
-                PixelOffsetFixCheckBox.IsEnabled = false;
-            }
+//            if (ContentList.SelectedItem != null && ContentList.SelectedItem.ToString().EndsWith(".CZ0"))
+//            {
+//                PixelOffsetFixCheckBox.IsEnabled = true;
+//            }
+//            else
+//            {
+//                PixelOffsetFixCheckBox.IsEnabled = false;
+//            }
 
             if (ContentList.SelectedItem != null)
             {
@@ -390,17 +390,36 @@ namespace WpfApp1
                 {
                     case ".CZ0":
                         // Copy bytes from inputFile to outputFile
-                        Array.Copy(inputFileBytes, 0x1C, outputFileBytes, 0x1C, 7);
-                        if (PixelOffsetFixCheckBox.IsChecked == true)
-                        {
-                            // Get value from bytes at 0x1C and 0x1D
-                            int value = BitConverter.ToInt16(outputFileBytes, 0x1C);
-                            // Subtract 2 from value
-                            value -= 2;
-                            // Write new value to bytes at 0x1C and 0x1D
-                            Array.Copy(BitConverter.GetBytes((short)value), 0, outputFileBytes, 0x1C, 2);
-                        }
+                        byte[] segmentToInsert = new byte[8];
+                        Array.Copy(inputFileBytes, 0x1C, segmentToInsert, 0, 8);
+
+                        // Create a new array to hold the result
+                        byte[] result = new byte[outputFileBytes.Length + segmentToInsert.Length];
+
+                        // Copy the first part of outputFileBytes
+                        Array.Copy(outputFileBytes, 0, result, 0, 0x1C);
+
+                        // Insert segmentToInsert
+                        Array.Copy(segmentToInsert, 0, result, 0x1C, segmentToInsert.Length);
+
+                        // Copy the rest of outputFileBytes
+                        Array.Copy(outputFileBytes, 0x1C, result, 0x1C + segmentToInsert.Length, outputFileBytes.Length - 0x1C);
+
+//                        if (PixelOffsetFixCheckBox.IsChecked == true)
+//                        {
+//                            // Get value from bytes at 0x1C and 0x1D
+//                            int value = BitConverter.ToInt16(result, 0x1C);
+//                            // Subtract 2 from value
+//                            value -= 2;
+//                            // Write new value to bytes at 0x1C and 0x1D
+//                            Array.Copy(BitConverter.GetBytes((short)value), 0, result, 0x1C, 2);
+//                        }
+
+                        // Replace outputFileBytes with the result
+                        outputFileBytes = result;
+
                         break;
+
                     case ".CZ3":
                         // Reduce value at address 0x24 by one
                         if (outputFileBytes[0x24] == 0)
