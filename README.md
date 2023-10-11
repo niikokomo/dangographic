@@ -48,10 +48,6 @@ The restore texture button reverts the currently selected texture to its default
 
 The restore all button will revert every texture in the currently selected .PAK file to its default state. This only functions if the user has a backup of the currently selected .PAK file.
 
-### CZ0 Pixel Offset Fix
-
-The CZ0 Pixel Offset Fix toggle is used to get around a limitation of reimporting CZ0 type textures. See [Texture Editing & Limitations](https://github.com/niikokomo/dangographic#texture-editing--limitations) for more information.
-
 https://user-images.githubusercontent.com/93227270/232661223-ab29f08f-3824-4cda-a7b9-af9963cd5e55.mp4
 
 # Texture Editing & Limitations
@@ -62,17 +58,11 @@ Due to a few limitations in both LuckSystem and Little Busters, textures importe
 
 There might very well be a way around this, the header data of certain textures contain values for its resolution. Limited testing has resulted in success for some textures and failure for others. Note that even if this does get implemented, the game's viewport is locked at 1280 x 720, so using this would only be useful for modifying the scale/boundaries of textures, not upscaling.
 
-### CZ0 type textures are displaced to the left by two pixels.
-
-This is due to a silly quirk of LuckSystem. The CZ0 Pixel Offset Fix toggle shifts the coordinates of the reimported texture two pixels to the right, visually fixing the issue. However, this fix may not be applied to everything as certain child textures (character expressions) depend on the coordinatess of their parent texture (character bodies). This video helps explain the error in detail and shows when the fix should be used.
-
-https://user-images.githubusercontent.com/93227270/232672902-8f7fd658-4cf6-4c33-885b-68b818ca181e.mp4
-
 ### 00 Byte Error
 
-Due to a fault in the way LuckSystem reimports CZ3 type images, the imported result by default suffers from massive color corruption. Dango Graphic hex-edits the converted file, subtracting one from the value at 0x24, before reimporting to fix this issue. But if that value is for any reason already 00, this fix fails to work. If you run into any case of a 00 byte error, please upload it and the PNG you attempted to import to the issues page of this repository.
+Due to a quirk in the importing of CZ3 type images, the imported result by default suffers from massive color corruption. Dango Graphic hex-edits the converted file, subtracting one from the value at 0x24, before reimporting to fix this issue. But if that value is for any reason already 00, this fix fails to work. If you run into any case of a 00 byte error, please upload it and the PNG you attempted to import to the issues page of this repository.
 
 # Disclaimer
-Much like my last tool, this program was almost entirely made using Microsoft's Bing Chat. I was mostly curious of the bot's ability to create a larger UI-focused program, even if it is a frontend for [LuckSystem](https://github.com/wetor/LuckSystem), which does all the heavy lifting.
+Much like my last experiment, this program was almost entirely made using Microsoft's Bing Chat. I was mostly curious of the bot's ability to create a larger UI-focused program, even if it is a frontend for [LuckSystem](https://github.com/wetor/LuckSystem), which does all the heavy lifting.
 
 This program is largely untested, so please use it at your own risk.
