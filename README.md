@@ -5,7 +5,7 @@ A small portable Windows GUI application to quickly modify the graphics of Littl
 Dango Graphic relies on and includes binaries for [LuckSystem](https://github.com/wetor/LuckSystem).
 
 # Installation
-Simply [download dangographic.zip](https://github.com/niikokomo/dangographic/releases/tag/dango) and extract the contents to any location of the user's choosing, so long as it has user write permissions.
+Simply [download dangographic.zip](https://github.com/niikokomo/dangographic/releases) and extract the contents to any location of the user's choosing, so long as it has user write permissions.
 
 # Usage
 
